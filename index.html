@@ -1,189 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>WOOFAI Landing</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoofAi - The Ultimate Meme Coin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&family=Neonderthaw&family=Poppins:wght@300;600&family=Orbitron:wght@500&family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --neon-cyan: #00f3ff;
+            --neon-pink: #ff00ff;
+            --bg-color: #0a0a0a;
+        }
 
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  body {
-    font-family: 'Fredoka One', cursive;
-    background: #1492FF;
-    background-image:
-      radial-gradient(circle at center, #4cb1ff 0%, #1492ff 80%);
-    color: white;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+        body {
+            background-color: var(--bg-color);
+            color: white;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
 
-  nav {
-    width: 100%;
-    max-width: 1200px;
-    padding: 15px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    top: 0;
-    background: transparent;
-    z-index: 100;
-  }
+        .neon-text {
+            font-family: 'Neonderthaw', cursive;
+            text-shadow: 0 0 10px var(--neon-cyan),
+                         0 0 20px var(--neon-cyan),
+                         0 0 30px var(--neon-cyan);
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
 
-  .nav-left {
-    font-size: 28px;
-    text-shadow: 2px 3px 0 #0a5d99;
-    letter-spacing: 2px;
-    user-select: none;
-    cursor: default;
-  }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px var(--neon-cyan),
+                            0 0 20px var(--neon-cyan),
+                            0 0 30px var(--neon-cyan);
+            }
+            to {
+                text-shadow: 0 0 20px var(--neon-pink),
+                            0 0 30px var(--neon-pink),
+                            0 0 40px var(--neon-pink);
+            }
+        }
 
-  .nav-center {
-    display: flex;
-    gap: 40px;
-    font-weight: 700;
-    font-size: 15px;
-    text-transform: uppercase;
-    text-shadow: 1px 1px 2px #0a5d99;
-  }
+        /* Stylish Fonts for Paragraphs */
+        .fancy-text {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
 
-  .nav-center a {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
+        .fun-text {
+            font-family: 'Bungee', cursive;
+            color: var(--neon-pink);
+        }
 
-  .nav-center a:hover {
-    color: #ffd95a;
-  }
+        .normal-text {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+        }
 
-  .nav-right {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-  }
+        header {
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--neon-cyan);
+            box-shadow: 0 0 15px var(--neon-cyan);
+        }
 
-  .nav-button, .buy-button {
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-weight: 700;
-    font-family: 'Fredoka One', cursive;
-    transition: background-color 0.3s ease;
-    user-select: none;
-    border-radius: 6px;
-    box-shadow: 2px 3px 0 #0a5d99;
-    text-shadow: 1px 1px 0 #0a5d99;
-  }
+        .logo {
+            width: 150px;
+            height: 150px;
+            margin: 1rem;
+            filter: drop-shadow(0 0 10px var(--neon-pink));
+            border-radius: 50%;
+            border: 3px solid var(--neon-cyan);
+        }
 
-  .nav-button {
-    width: 40px;
-    height: 40px;
-    background: #FFF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+        .presale-btn {
+            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink));
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin: 2rem 0;
+            box-shadow: 0 0 20px var(--neon-cyan);
+            font-family: 'Orbitron', sans-serif;
+        }
 
-  .nav-button svg {
-    width: 20px;
-    height: 20px;
-    fill: #1492FF;
-  }
+        .presale-btn:hover {
+            transform: scale(1.05);
+        }
 
-  .nav-button:hover {
-    background: #ffd95a;
-    box-shadow: 2px 3px 0 #b28e17;
-  }
+        .social-icons {
+            margin: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
 
-  .buy-button {
-    background: #fff;
-    color: #1492FF;
-    padding: 8px 20px;
-    font-size: 14px;
-    border-radius: 12px;
-  }
+        .social-icons a {
+            color: white;
+            font-size: 2rem;
+            transition: all 0.3s;
+        }
 
-  .buy-button:hover {
-    background: #ffd95a;
-    color: #6b5200;
-    box-shadow: 2px 3px 0 #b28e17;
-  }
+        .social-icons a:hover {
+            color: var(--neon-pink);
+            transform: scale(1.2);
+        }
 
-  main {
-    margin-top: 100px;
-    width: 100%;
-    max-width: 1200px;
-    text-align: center;
-    user-select: none;
-    padding-bottom: 100px;
-    position: relative;
-  }
+        .container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-  main::before {
-    content: '';
-    position: absolute;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle at center, #4cb1ff 0%, transparent 80%);
-    z-index: -1;
-    filter: drop-shadow(0 0 12px rgba(255 255 255 / 0.3));
-    mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, transparent 90%);
-  }
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 15px var(--neon-cyan);
+        }
 
-  h1 {
-    font-size: 100px;
-    line-height: 1;
-    color: #fff8e1;
-    text-shadow:
-      4px 4px 0 #0a5d99,
-      7px 7px 0 #0863bf;
-    margin-bottom: 40px;
-  }
+        .tokenomics-chart {
+            max-width: 800px;
+            height: 400px;
+            margin: 2rem auto;
+        }
 
-  .logo {
-    width: 250px;
-    height: 250px;
-    margin: 0 auto;
-    user-select: none;
-    filter: drop-shadow(2px 3px 1px rgba(0,0,0,0.4));
-  }
-</style>
+        /* INFO BOXES */
+        .info-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 10px var(--neon-cyan);
+            min-width: 250px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .info-box:hover {
+            transform: scale(1.05);
+        }
+
+        .info-box h3 {
+            color: var(--neon-pink);
+            margin-bottom: 0.5rem;
+            font-family: 'Bungee', cursive;
+        }
+
+        /* COPY BUTTON */
+        .copy-btn {
+            background: var(--neon-cyan);
+            color: black;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .copy-btn:hover {
+            background: var(--neon-pink);
+            color: white;
+        }
+
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 768px) {
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .presale-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .info-box {
+                min-width: 100%;
+            }
+            
+            .tokenomics-chart {
+                height: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <img src="https://gateway.pinata.cloud/ipfs/bafybeih3iwshjpvlxlsbg6mazrv77qu3inzpmixvznyaihqa2ut674nklu" alt="WoofAi Logo" class="logo">
+        <h1 class="neon-text">WoofAi</h1>
+        
+        <div class="info-container">
+            <div class="info-box">
+                <h3>Symbol</h3>
+                <p class="neon-text">WOFAI</p>
+            </div>
+            <div class="info-box">
+                <h3>Total Supply</h3>
+                <p class="fancy-text">18.45B</p>
+            </div>
+            <div class="info-box">
+                <h3>Mint Address</h3>
+                <p id="mintAddress" class="fancy-text">GhX61gZrBwmGQfQWyL7jvjANnLN6smHcYDZxYrA5yfcn</p>
+                <button onclick="copyAddress()" class="copy-btn">Copy Address</button>
+            </div>
+        </div>
 
-<nav>
-  <div class="nav-left">WOOFAI</div>
-  <div class="nav-center">
-    <a href="#about">ABOUT</a>
-    <a href="#tokenomics">TOKENOMICS</a>
-    <a href="#roadmap">ROADMAP</a>
-  </div>
-  <div class="nav-right">
-    <button class="nav-button" title="Twitter">
-      <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="#1492FF" stroke-width="2" stroke-linecap="round"/></svg>
-    </button>
-    <button class="nav-button" title="Telegram">
-      <svg viewBox="0 0 24 24"><path d="M22 4.01L2.01 11l6.08 1.6 1.87 5.72 2.64-7.34 6.49-7.68z" fill="#1492FF"/></svg>
-    </button>
-    <button class="buy-button">BUY NOW</button>
-  </div>
-</nav>
+        <button class="presale-btn" onclick="window.open('https://woofaipresale.netlify.app/')">Join Presale</button>
+    </header>
 
-<main>
-  <h1>WOOFAI</h1>
-  <img src="logo.png" alt="WOOFAI Logo" class="logo" />
-</main>
+    <div class="container">
+        <section id="home" class="section">
+            <h2 class="neon-text">Welcome to WoofAi!</h2>
+            <p class="normal-text">The ultimate meme coin that combines the power of AI with the fun of crypto. WoofAi is here to revolutionize the meme coin space with a strong community and innovative tokenomics.</p>
+            <div class="social-icons">
+                <a href="https://t.me/woofai_announcement" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a href="https://discord.gg/3Yspb48C" target="_blank"><i class="fab fa-discord"></i></a>
+                <a href="https://x.com/Woof_AiOfficial" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </section>
 
+        <section id="about" class="section">
+            <h2 class="neon-text">About WoofAi</h2>
+            <p class="normal-text">WoofAi is the next-generation meme coin designed to challenge the likes of Shiba Inu and Dogecoin. We combine cutting-edge AI technology with viral meme culture to create a truly unique crypto experience.</p>
+            <br>
+            <p class="fun-text">🚀 WHY WOFAI?</p>
+            <p class="fancy-text">🔥 Community-Driven - 50% of tokens go to holders</p>
+            <p class="fancy-text">💎 Strong Tokenomics - Sustainable growth model</p>
+            <p class="fancy-text">🤖 AI-Powered - The future of meme coins</p>
+        </section>
+
+        <section id="tokenomics" class="section">
+            <h2 class="neon-text">Tokenomics</h2>
+            <div class="tokenomics-chart">
+                <canvas id="tokenomicsChart"></canvas>
+            </div>
+            <br>
+            <h3 class="fun-text">Distribution Breakdown:</h3>
+            <ul style="list-style: none; text-align: center;">
+                <li class="fancy-text">💻 <strong>Development</strong>: 5%</li>
+                <li class="fancy-text">👥 <strong>Team</strong>: 5%</li>
+                <li class="fancy-text">📢 <strong>Marketing</strong>: 7%</li>
+                <li class="fancy-text">🎁 <strong>Airdrop</strong>: 10%</li>
+                <li class="fancy-text">💰 <strong>Liquidity</strong>: 33%</li>
+                <li class="fancy-text">🌍 <strong>Community</strong>: 50%</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        // Copy Mint Address
+        function copyAddress() {
+            const text = document.getElementById('mintAddress').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Mint address copied to clipboard!');
+            });
+        }
+
+        // Tokenomics Chart
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('tokenomicsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Development (5%)', 'Team (5%)', 'Marketing (7%)', 'Airdrop (10%)', 'Liquidity (33%)', 'Community (50%)'],
+                    datasets: [{
+                        data: [5, 5, 7, 10, 33, 50],
+                        backgroundColor: [
+                            '#00f3ff',
+                            '#ff00ff',
+                            '#00ff00',
+                            '#ff9900',
+                            '#cc00ff',
+                            '#00ccff'
+                        ],
+                        borderColor: 'rgba(255, 255, 255, 0.5)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                color: 'white',
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        tooltip: {
+                            bodyFont: {
+                                size: 14
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
-</html>
+              </html>
