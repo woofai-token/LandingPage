@@ -1,337 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WoofAi - The Ultimate Meme Coin</title>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&family=Neonderthaw&family=Poppins:wght@300;600&family=Orbitron:wght@500&family=Bungee&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        :root {
-            --neon-cyan: #00f3ff;
-            --neon-pink: #ff00ff;
-            --bg-color: #0a0a0a;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WoofAi Token</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bungee&family=Neonderthaw&family=Orbitron&family=Poppins&display=swap"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --neon-cyan: #00d4ff;
+      --neon-pink: #ff66cc;
+      --neon-green: #39ff14;
+      --dark-bg: #0d0d0d;
+      --light-bg: #1a1a1a;
+      --white: #ffffff;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        body {
-            background-color: var(--bg-color);
-            color: white;
-            overflow-x: hidden;
-            font-family: 'Poppins', sans-serif;
-        }
+    body {
+      font-family: "Poppins", sans-serif;
+      background: var(--dark-bg);
+      color: var(--white);
+      line-height: 1.6;
+    }
 
-        .neon-text {
-            font-family: 'Neonderthaw', cursive;
-            text-shadow: 0 0 10px var(--neon-cyan),
-                         0 0 20px var(--neon-cyan),
-                         0 0 30px var(--neon-cyan);
-            animation: glow 1.5s ease-in-out infinite alternate;
-        }
+    header {
+      background: var(--light-bg);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 10px var(--neon-cyan),
-                            0 0 20px var(--neon-cyan),
-                            0 0 30px var(--neon-cyan);
-            }
-            to {
-                text-shadow: 0 0 20px var(--neon-pink),
-                            0 0 30px var(--neon-pink),
-                            0 0 40px var(--neon-pink);
-            }
-        }
+    header h1 {
+      font-family: "Bungee", cursive;
+      color: var(--neon-green);
+      font-size: 2rem;
+    }
 
-        /* Stylish Fonts for Paragraphs */
-        .fancy-text {
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 1px;
-        }
+    nav a {
+      color: var(--white);
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-family: "Orbitron", sans-serif;
+      transition: color 0.3s;
+    }
 
-        .fun-text {
-            font-family: 'Bungee', cursive;
-            color: var(--neon-pink);
-        }
+    nav a:hover {
+      color: var(--neon-pink);
+    }
 
-        .normal-text {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-        }
+    section {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
 
-        header {
-            padding: 2rem;
-            text-align: center;
-            border-bottom: 3px solid var(--neon-cyan);
-            box-shadow: 0 0 15px var(--neon-cyan);
-        }
+    h2 {
+      font-family: "Orbitron", sans-serif;
+      color: var(--neon-cyan);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
 
-        .logo {
-            width: 150px;
-            height: 150px;
-            margin: 1rem;
-            filter: drop-shadow(0 0 10px var(--neon-pink));
-            border-radius: 50%;
-            border: 3px solid var(--neon-cyan);
-        }
+    .typing {
+      font-family: "Orbitron", sans-serif;
+      white-space: pre-wrap;
+      overflow: hidden;
+      border-right: 0.15em solid var(--neon-green);
+      animation: caret 1s steps(1) infinite;
+    }
 
-        .presale-btn {
-            background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink));
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 30px;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: transform 0.3s;
-            margin: 2rem 0;
-            box-shadow: 0 0 20px var(--neon-cyan);
-            font-family: 'Orbitron', sans-serif;
-        }
+    @keyframes caret {
+      50% {
+        border-color: transparent;
+      }
+    }
 
-        .presale-btn:hover {
-            transform: scale(1.05);
-        }
+    .tokenomics-container {
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+    }
 
-        .social-icons {
-            margin: 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
+    footer {
+      background: var(--light-bg);
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
 
-        .social-icons a {
-            color: white;
-            font-size: 2rem;
-            transition: all 0.3s;
-        }
+    img.section-visual {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+      user-select: none;
+      pointer-events: none;
+    }
 
-        .social-icons a:hover {
-            color: var(--neon-pink);
-            transform: scale(1.2);
-        }
+    .cta-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
 
-        .container {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    .cta-button {
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-family: "Orbitron", sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      font-size: 0.9rem;
+    }
 
-        .section {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 2rem 0;
-            border: 2px solid var(--neon-cyan);
-            box-shadow: 0 0 15px var(--neon-cyan);
-        }
+    .primary-button {
+      background: var(--neon-green);
+      color: var(--dark-bg);
+    }
 
-        .tokenomics-chart {
-            max-width: 800px;
-            height: 400px;
-            margin: 2rem auto;
-        }
+    .primary-button:hover {
+      box-shadow: 0 0 15px var(--neon-green);
+      transform: translateY(-2px);
+    }
 
-        /* INFO BOXES */
-        .info-container {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin: 2rem 0;
-        }
+    .secondary-button {
+      background: transparent;
+      color: var(--neon-cyan);
+      border: 2px solid var(--neon-cyan);
+    }
 
-        .info-box {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border: 2px solid var(--neon-cyan);
-            box-shadow: 0 0 10px var(--neon-cyan);
-            min-width: 250px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
+    .secondary-button:hover {
+      box-shadow: 0 0 15px var(--neon-cyan);
+      transform: translateY(-2px);
+    }
 
-        .info-box:hover {
-            transform: scale(1.05);
-        }
+    .roadmap-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 2rem;
+    }
 
-        .info-box h3 {
-            color: var(--neon-pink);
-            margin-bottom: 0.5rem;
-            font-family: 'Bungee', cursive;
-        }
+    .roadmap-item {
+      background: var(--light-bg);
+      border-left: 4px solid var(--neon-pink);
+      padding: 20px;
+      border-radius: 0 8px 8px 0;
+      position: relative;
+      transition: all 0.3s ease;
+    }
 
-        /* COPY BUTTON */
-        .copy-btn {
-            background: var(--neon-cyan);
-            color: black;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            margin-top: 0.5rem;
-            font-weight: bold;
-            font-family: 'Orbitron', sans-serif;
-        }
+    .roadmap-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
 
-        .copy-btn:hover {
-            background: var(--neon-pink);
-            color: white;
-        }
+    .roadmap-item.completed {
+      border-left-color: var(--neon-green);
+      opacity: 0.8;
+    }
 
-        /* MOBILE RESPONSIVENESS */
-        @media (max-width: 768px) {
-            .logo {
-                width: 100px;
-                height: 100px;
-            }
-            
-            .presale-btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 1rem;
-            }
+    .roadmap-item.ongoing {
+      border-left-color: var(--neon-cyan);
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+    }
 
-            .info-box {
-                min-width: 100%;
-            }
-            
-            .tokenomics-chart {
-                height: 300px;
-            }
-        }
-    </style>
+    .roadmap-item h3 {
+      color: var(--white);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .status-badge {
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .status-completed {
+      background: var(--neon-green);
+      color: var(--dark-bg);
+    }
+
+    .status-ongoing {
+      background: var(--neon-cyan);
+      color: var(--dark-bg);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav a {
+        margin: 0.5rem;
+        display: inline-block;
+      }
+
+      header div.logo-title {
+        justify-content: center;
+      }
+
+      .cta-buttons {
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <img src="https://gateway.pinata.cloud/ipfs/bafybeih3iwshjpvlxlsbg6mazrv77qu3inzpmixvznyaihqa2ut674nklu" alt="WoofAi Logo" class="logo">
-        <h1 class="neon-text">WoofAi</h1>
-        
-        <div class="info-container">
-            <div class="info-box">
-                <h3>Symbol</h3>
-                <p class="neon-text">WOFAI</p>
-            </div>
-            <div class="info-box">
-                <h3>Total Supply</h3>
-                <p class="fancy-text">18.45B</p>
-            </div>
-            <div class="info-box">
-                <h3>Mint Address</h3>
-                <p id="mintAddress" class="fancy-text">GhX61gZrBwmGQfQWyL7jvjANnLN6smHcYDZxYrA5yfcn</p>
-                <button onclick="copyAddress()" class="copy-btn">Copy Address</button>
-            </div>
-        </div>
-
-        <button class="presale-btn" onclick="window.open('https://woofaipresale.netlify.app/')">Join Presale</button>
-    </header>
-
-    <div class="container">
-        <section id="home" class="section">
-            <h2 class="neon-text">Welcome to WoofAi!</h2>
-            <p class="normal-text">The ultimate meme coin that combines the power of AI with the fun of crypto. WoofAi is here to revolutionize the meme coin space with a strong community and innovative tokenomics.</p>
-            <div class="social-icons">
-                <a href="https://t.me/woofai_announcement" target="_blank"><i class="fab fa-telegram"></i></a>
-                <a href="https://discord.gg/3Yspb48C" target="_blank"><i class="fab fa-discord"></i></a>
-                <a href="https://x.com/Woof_AiOfficial" target="_blank"><i class="fab fa-twitter"></i></a>
-            </div>
-        </section>
-
-        <section id="about" class="section">
-            <h2 class="neon-text">About WoofAi</h2>
-            <p class="normal-text">WoofAi is the next-generation meme coin designed to challenge the likes of Shiba Inu and Dogecoin. We combine cutting-edge AI technology with viral meme culture to create a truly unique crypto experience.</p>
-            <br>
-            <p class="fun-text">🚀 WHY WOFAI?</p>
-            <p class="fancy-text">🔥 Community-Driven - 50% of tokens go to holders</p>
-            <p class="fancy-text">💎 Strong Tokenomics - Sustainable growth model</p>
-            <p class="fancy-text">🤖 AI-Powered - The future of meme coins</p>
-        </section>
-
-        <section id="tokenomics" class="section">
-            <h2 class="neon-text">Tokenomics</h2>
-            <div class="tokenomics-chart">
-                <canvas id="tokenomicsChart"></canvas>
-            </div>
-            <br>
-            <h3 class="fun-text">Distribution Breakdown:</h3>
-            <ul style="list-style: none; text-align: center;">
-                <li class="fancy-text">💻 <strong>Development</strong>: 5%</li>
-                <li class="fancy-text">👥 <strong>Team</strong>: 5%</li>
-                <li class="fancy-text">📢 <strong>Marketing</strong>: 7%</li>
-                <li class="fancy-text">🎁 <strong>Airdrop</strong>: 10%</li>
-                <li class="fancy-text">💰 <strong>Liquidity</strong>: 33%</li>
-                <li class="fancy-text">🌍 <strong>Community</strong>: 50%</li>
-            </ul>
-        </section>
+  <header>
+    <div class="logo-title" style="display: flex; align-items: center; gap: 10px;">
+      <img
+        src="https://crimson-certain-wolf-336.mypinata.cloud/ipfs/bafybeih3iwshjpvlxlsbg6mazrv77qu3inzpmixvznyaihqa2ut674nklu"
+        alt="WoofAi Logo"
+        style="height: 50px"
+      />
+      <h1>WoofAi Token</h1>
     </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#roadmap">Roadmap</a>
+    </nav>
+  </header>
 
-    <script>
-        // Copy Mint Address
-        function copyAddress() {
-            const text = document.getElementById('mintAddress').innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Mint address copied to clipboard!');
-            });
-        }
+  <main>
+    <section id="about">
+      <h2>About WoofAi</h2>
+      <p id="typing" class="typing"></p>
+      
+      <div class="cta-buttons">
+        <button class="cta-button primary-button" href="https://woofaipresale.netlify.app/">Join Presale</button>
+        <button class="cta-button secondary-button" onclick="alert('Redirect to whitepaper')">Whitepaper</button>
+      </div>
+    </section>
 
-        // Tokenomics Chart
-        document.addEventListener('DOMContentLoaded', function() {
-            const ctx = document.getElementById('tokenomicsChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Development (5%)', 'Team (5%)', 'Marketing (7%)', 'Airdrop (10%)', 'Liquidity (33%)', 'Community (50%)'],
-                    datasets: [{
-                        data: [5, 5, 7, 10, 33, 50],
-                        backgroundColor: [
-                            '#00f3ff',
-                            '#ff00ff',
-                            '#00ff00',
-                            '#ff9900',
-                            '#cc00ff',
-                            '#00ccff'
-                        ],
-                        borderColor: 'rgba(255, 255, 255, 0.5)',
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                            labels: {
-                                color: 'white',
-                                font: {
-                                    size: 14
-                                }
-                            }
-                        },
-                        tooltip: {
-                            bodyFont: {
-                                size: 14
-                            }
-                        }
-                    }
-                }
-            });
-        });
+    <section id="tokenomics">
+      <h2>Tokenomics</h2>
+      <div class="tokenomics-container">
+        <canvas id="tokenomicsChart"></canvas>
+      </div>
+    </section>
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    <section id="roadmap">
+      <h2>Roadmap</h2>
+      <div class="roadmap-container">
+        <div class="roadmap-item completed">
+          <h3>Token Minting <span class="status-badge status-completed">Completed</span></h3>
+          <p>The foundation of WoofAi with token creation and initial distribution setup.</p>
+        </div>
+        
+        <div class="roadmap-item ongoing">
+          <h3>Phase 1 Presale <span class="status-badge status-ongoing">Ongoing</span></h3>
+          <p>Initial token offering to early supporters with exclusive benefits.</p>
+        </div>
+        
+        <div class="roadmap-item">
+          <h3>Phase 2 Presale</h3>
+          <p>Expanded token offering with additional features and community incentives.</p>
+        </div>
+        
+        <div class="roadmap-item">
+          <h3>Community Building & Airdrip</h3>
+          <p>Strategic distribution to active community members and marketing campaigns.</p>
+        </div>
+        
+        <div class="roadmap-item">
+          <h3>Listing on Exchanges</h3>
+          <p>Securing listings on major decentralized and centralized exchanges.</p>
+        </div>
+        
+        <div class="roadmap-item">
+          <h3>Ecosystem Expansion</h3>
+          <p>Development of additional utilities and partnerships for the WoofAi token.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 WoofAi. All rights reserved.<br />
+    Contact:
+    <a
+      href="mailto:woofai.coin@gmail.com"
+      style="color: var(--neon-green); text-decoration: none"
+      >woofai.coin@gmail.com</a
+    ><br />
+    View on
+    <a
+      href="https://explorer.solana.com/address/GhX61gZrBwmGQfQWyL7jvjANnLN6smHcYDZxYrA5yfcn?cluster=mainnet"
+      target="_blank"
+      style="color: var(--neon-cyan); text-decoration: none"
+      >Solana Explorer</a
+    ><br />
+    <small>This is a meme token. It holds no intrinsic investment value. Always DYOR.</small>
+  </footer>
+
+  <script>
+    const text = `WoofAi is not just another meme coin. It's an innovative blend of decentralized finance and AI-driven community engagement built on the Solana blockchain. Designed to reward loyalty, creativity, and participation, WoofAi empowers its holders through real-time governance, viral campaigns, and strategic airdrips.
+
+Our mission is to bridge the gap between fun and functionality in the world of crypto. With blazing-fast transactions, low fees, and a vibrant ecosystem, WoofAi is geared to become the heartbeat of the next-gen Web3 meme economy.
+
+Join the WoofAi revolution — where memes have meaning and your bark holds value!`;
+    let i = 0;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("typing").textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 20);
+      }
+    }
+    window.onload = typeWriter;
+
+    const ctx = document.getElementById("tokenomicsChart").getContext("2d");
+    new Chart(ctx, {
+      type: "doughnut",
+      data: {
+        labels: [
+          "Team",
+          "Development",
+          "Community",
+          "Marketing",
+          "Liquidity Pool",
+          "Airdrip",
+        ],
+        datasets: [
+          {
+            label: "Token Distribution",
+            data: [5, 5, 50, 7, 33, 10],
+            backgroundColor: [
+              "#00d4ff",
+              "#ff66cc",
+              "#39ff14",
+              "#ffcc00",
+              "#6610f2",
+              "#17a2b8",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          legend: {
+            position: "bottom",
+            labels: {
+              color: "#fff",
+            },
+          },
+        },
+      },
+    });
+  </script>
 </body>
-              </html>
+
+</html>
